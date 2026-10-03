@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Engineer API — Console</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<header class="topbar">
+    <div class="topbar-inner">
+        <div class="brand">
+            <span class="dot"></span>
+            <h1>AI Engineer API</h1>
+        </div>
+        <span class="status" id="apiStatus">checking…</span>
+    </div>
+</header>
+
+<main class="layout">
+    <nav class="tabs" id="tabs">
+        <button class="tab active" data-tab="chat">/chat</button>
+        <button class="tab" data-tab="classify">/classify</button>
+        <button class="tab" data-tab="research">/research</button>
+    </nav>
+
+    <section class="panel active" id="panel-chat">
+        <h2>Chat</h2>
+        <p class="desc">Send a message, get a conversational reply from the model.</p>
+        <label>Message</label>
+        <textarea id="chatInput" placeholder="Ask the assistant anything…"></textarea>
+        <button class="run-btn" onclick="callChat()" id="chatBtn">Run /chat</button>
+        <div class="output-label">Response</div>
+        <pre class="output" id="chatOutput">// response will appear here</pre>
+    </section>
+
+    <section class="panel" id="panel-classify">
+        <h2>Classify</h2>
+        <p class="desc">Paste a customer email, get back structured JSON: category, urgency, summary.</p>
+        <label>Email text</label>
+        <textarea id="classifyInput" placeholder="Paste an email to classify…"></textarea>
+        <button class="run-btn" onclick="callClassify()" id="classifyBtn">Run /classify</button>
+        <div class="output-label">Response</div>
+        <pre class="output" id="classifyOutput">// response will appear here</pre>
+    </section>
+
+    <section class="panel" id="panel-research">
+        <h2>Research</h2>
+        <p class="desc">Give it a topic, get a structured report: summary, key facts, trends, conclusion.</p>
+        <label>Topic</label>
+        <input type="text" id="researchInput" placeholder="e.g. Quantum computing in 2026">
+        <button class="run-btn" onclick="callResearch()" id="researchBtn">Run /research</button>
+        <div class="output-label">Response</div>
+        <pre class="output" id="researchOutput">// response will appear here</pre>
+    </section>
+</main>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

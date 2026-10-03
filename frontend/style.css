@@ -1,0 +1,143 @@
+:root {
+    --bg: #0d0b14;
+    --surface: #161320;
+    --surface-raised: #1e1a2b;
+    --border: #2c2640;
+    --text: #e9e6f5;
+    --muted: #8d85a8;
+    --violet: #8b5cf6;
+    --violet-dim: #5b3fa0;
+    --cyan: #22d3ee;
+    --ok: #34d399;
+    --err: #f87171;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    background:
+        radial-gradient(800px circle at 50% -10%, rgba(139,92,246,0.12), transparent 60%),
+        var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+}
+.mono { font-family: 'JetBrains Mono', monospace; }
+
+/* ---------- Top bar ---------- */
+.topbar { border-bottom: 1px solid var(--border); padding: 18px 32px; }
+.topbar-inner { max-width: 880px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+.brand { display: flex; align-items: center; gap: 10px; }
+.dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--violet);
+    box-shadow: 0 0 12px var(--violet);
+}
+.brand h1 { font-size: 17px; font-weight: 600; letter-spacing: 0.2px; }
+.status {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11.5px; color: var(--muted);
+    padding: 4px 10px; border: 1px solid var(--border); border-radius: 20px;
+}
+.status.ok { color: var(--ok); border-color: rgba(52,211,153,0.3); }
+.status.err { color: var(--err); border-color: rgba(248,113,113,0.3); }
+
+/* ---------- Layout ---------- */
+.layout { max-width: 880px; margin: 0 auto; padding: 32px 24px 60px; }
+
+.tabs { display: flex; gap: 8px; margin-bottom: 20px; }
+.tab {
+    font-family: 'JetBrains Mono', monospace;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 13px;
+    padding: 9px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+.tab:hover { color: var(--text); border-color: var(--violet-dim); }
+.tab.active { background: var(--violet); color: #fff; border-color: var(--violet); }
+
+.panel {
+    display: none;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 26px 28px;
+}
+.panel.active { display: block; }
+.panel h2 { font-size: 19px; font-weight: 600; margin-bottom: 6px; }
+.panel .desc { color: var(--muted); font-size: 13.5px; margin-bottom: 20px; line-height: 1.5; }
+
+label {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 7px;
+}
+textarea, input[type="text"] {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    color: var(--text);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+textarea { height: 110px; resize: vertical; }
+textarea:focus, input:focus {
+    outline: none; border-color: var(--violet);
+    box-shadow: 0 0 0 3px rgba(139,92,246,0.15);
+}
+
+.run-btn {
+    margin-top: 14px;
+    font-family: 'JetBrains Mono', monospace;
+    background: var(--violet);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 11px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.05s;
+}
+.run-btn:hover { background: #7c4deb; }
+.run-btn:active { transform: translateY(1px); }
+.run-btn:disabled { background: var(--border); color: var(--muted); cursor: not-allowed; }
+
+.output-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 22px 0 8px;
+}
+.output {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 18px;
+    color: var(--cyan);
+    white-space: pre-wrap;
+    word-break: break-word;
+    max-height: 360px;
+    overflow-y: auto;
+}
+.output.error { color: var(--err); }
+
+@media (max-width: 600px) {
+    .layout { padding: 20px 16px 48px; }
+    .panel { padding: 20px; }
+    .tabs { flex-wrap: wrap; }
+}
